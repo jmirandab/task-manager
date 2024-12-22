@@ -1,0 +1,66 @@
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  border-radius: 4px;
+  z-index: 4;
+}
+
+.task__main {
+  display: block;
+}
+
+
+.task__main form button {
+  padding: 0.2rem;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.task__main fieldset {
+  padding: 1em 2em;
+  border: none;
+}
+
+.task__main h2 {
+  padding: 0.4em 0 0;
+  border: none;
+  text-align: center;
+}
+
+.task__main label {
+  padding-right: 0.4em;
+  
+}
+
+.task__main input {
+  padding: 0.4em;
+  
+}
+
+.task__main input:user-invalid {
+  border: 2px solid red;
+}
+
+.button--cta,
+.task__main form button[type="submit"] {
+  color: var(--background);
+  background-color: var(--foreground);
+}
+
+.task__main footer {
+  display: flex;
+  gap: 0.5em;
+  padding: 0.5em;
+}
+
+/* .task__main dialog::before{
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+} */
