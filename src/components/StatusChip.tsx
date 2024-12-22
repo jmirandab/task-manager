@@ -1,4 +1,3 @@
-import React, { useState, useRef } from "react";
 import styles from "./StatusChip.module.css";
 
 export default function StatusChip ({ status }: { status: "pending" | "completed"}) {

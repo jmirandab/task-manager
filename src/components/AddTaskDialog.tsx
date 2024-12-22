@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./AddTaskDialog.module.css";
 
-export default function AddTaskDialog({ onAddTask }: { onAddTask: Function }) {
+export default function AddTaskDialog({ onAddTask }: { onAddTask: (title: string) => void }) {
   const [taskTitle, setTaskTitle] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [ariaMsg, setAriaMsg] = useState("");
