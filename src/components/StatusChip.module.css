@@ -3,7 +3,6 @@
   width: 100%;
   border-radius: 3em;
   justify-content: center;
-  color: var(--background);
   position: relative;
   text-align: center;
 }
@@ -36,4 +35,30 @@
 
 .statusChip__text {
   margin: 0 1.5em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .statuschip {
+    color: var(--background);
+    background-color: transparent;
+  }
+
+  .statuschip_pending {
+    border: 2px solid #f7f74b;
+    color: yellow; 
+
+    .statuschip__icon {
+      outline: 1px solid yellow;
+
+    }
+  }
+  
+  .statuschip_complete {
+    border: 2px solid #28c328;
+    color: #28c328;
+    .statuschip__icon {
+      outline: 1px solid #28c328;
+
+    }
+  }
 }

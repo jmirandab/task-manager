@@ -26,7 +26,7 @@ export default function AddTaskDialog({ onAddTask }: { onAddTask: (title: string
       <span className="sr-only" aria-atomic aria-live="polite">
         {ariaMsg}
       </span>
-      <button onClick={openDialog} aria-label="Open Add Task Dialog">
+      <button autoFocus className={styles.button__cta} onClick={openDialog} aria-label="Open Add Task Dialog">
         <span aria-hidden>+</span> Add Task
       </button>
       <dialog
@@ -40,6 +40,7 @@ export default function AddTaskDialog({ onAddTask }: { onAddTask: (title: string
           <fieldset>
             <label htmlFor="task-title">Task Title</label>
             <input
+              autoFocus
               id="task-title"
               type="text"
               value={taskTitle}

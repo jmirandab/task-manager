@@ -8,7 +8,7 @@
 }
 
 .task__main {
-  display: block;
+  display: inline-block;
 }
 
 
@@ -35,7 +35,7 @@
 }
 
 .task__main input {
-  padding: 0.4em;
+  padding: 4px 6px;
   
 }
 
@@ -43,8 +43,9 @@
   border: 2px solid red;
 }
 
-.button--cta,
+.button__cta,
 .task__main form button[type="submit"] {
+  font-size: 1.1em;
   color: var(--background);
   background-color: var(--foreground);
 }
@@ -54,13 +55,3 @@
   gap: 0.5em;
   padding: 0.5em;
 }
-
-/* .task__main dialog::before{
-  content: " ";
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-} */
