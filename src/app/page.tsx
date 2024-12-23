@@ -104,7 +104,6 @@ export default function Home() {
         } else {
           return (titleA < titleB)?  1: -1;
         }
-        return 0;
       })
 
   return (
