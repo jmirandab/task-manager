@@ -99,10 +99,10 @@ export default function Home() {
         const titleB = b.title.replace(/\s+/g, '').toLowerCase();
         console.log("titleA < titleB", titleA , titleB, titleA < titleB);
         if (sortAlpha) {
-          return (titleA < titleB)?  -1: 1;
+          return (a.title < b.title)?  -1: 1;
           
         } else {
-          return (titleA < titleB)?  1: -1;
+          return (a.title < b.title)?  1: -1;
         }
       })
 
