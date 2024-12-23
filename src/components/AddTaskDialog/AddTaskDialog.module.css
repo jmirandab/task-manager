@@ -7,10 +7,20 @@
   z-index: 4;
 }
 
+.task__main dialog::backdrop {
+  background: rgb(51, 48, 52);
+  background: radial-gradient(
+    circle,
+    rgba(51, 48, 52, 1) 18%,
+    rgba(36, 36, 36, 1) 46%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  opacity: 0.6;
+}
+
 .task__main {
   display: inline-block;
 }
-
 
 .task__main form button {
   padding: 0.2rem;
@@ -31,12 +41,10 @@
 
 .task__main label {
   padding-right: 0.4em;
-  
 }
 
 .task__main input {
   padding: 4px 6px;
-  
 }
 
 .task__main input:user-invalid {
