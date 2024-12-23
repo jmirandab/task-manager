@@ -101,9 +101,9 @@ export default function Home() {
         const cleanA = a.title.replace(/\s+/g, '').toLowerCase();
         const cleanB = b.title.replace(/\s+/g, '').toLowerCase();
         if (sortAlpha) {   
-          return cleanA > cleanA? 1:-1;
+          return cleanA > cleanB? 1:-1;
         } else {
-         return cleanA > cleanA? -1:1;
+         return cleanA > cleanB? -1:-1;
         }
       });
     
