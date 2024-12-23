@@ -93,11 +93,8 @@ export default function Home() {
     return task.status === filterStatus;
   });
 
-  console.log("filteredTasks", filteredTasks)
-
   // Sort Tasks
-  const displayedTasks = sortAlpha
-    ? [...filteredTasks].sort((a, b) => {
+  const displayedTasks = filteredTasks.sort((a, b) => {
         const titleA = a.title.replace(/\s+/g, '').toLowerCase();
         const titleB = b.title.replace(/\s+/g, '').toLowerCase();
         console.log("titleA < titleB", titleA , titleB, titleA < titleB);
@@ -110,7 +107,6 @@ export default function Home() {
         }
         return 0;
       })
-    : filteredTasks;
 
   return (
     <main className={styles.App}>
