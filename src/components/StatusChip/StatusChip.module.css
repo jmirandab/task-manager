@@ -1,0 +1,64 @@
+.statuschip {
+  padding: 0.2em;
+  width: 100%;
+  border-radius: 3em;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+}
+
+.statuschip_pending {
+  background-color: #f7f74b;
+  /* color: yellow; */
+}
+
+.statuschip_complete {
+  background-color: #28c328;
+  /* color: green; */
+}
+
+.statuschip__icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  translate: 50% -50%;
+  width: 1.3em;
+  height: 1.3em;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.8em;
+  outline: 1px solid black;
+  padding: 0.1em;
+  border-radius: 50%;
+  line-height: 1.2em;
+}
+
+.statusChip__text {
+  margin: 0 1.5em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .statuschip {
+    color: var(--background);
+    background-color: transparent;
+  }
+
+  .statuschip_pending {
+    border: 2px solid #f7f74b;
+    color: yellow; 
+
+    .statuschip__icon {
+      outline: 1px solid yellow;
+
+    }
+  }
+  
+  .statuschip_complete {
+    border: 2px solid #28c328;
+    color: #28c328;
+    .statuschip__icon {
+      outline: 1px solid #28c328;
+
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.list__title_col {
+  grid-area: title;
+}
+
+.list__status_col {
+  grid-area: status;
+}
+
+.list__actions_col {
+  grid-area: actions;
+}

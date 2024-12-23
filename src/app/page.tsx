@@ -1,26 +1,19 @@
 "use client";
 import styles from "./page.module.css";
 import React, { useState, useEffect } from "react";
-import AddTaskDialog from "@/components/AddTaskDialog";
-import StatusChip from "@/components/StatusChip";
+import AddTaskDialog from "@/components/AddTaskDialog/AddTaskDialog";
+import TaskItem from "@/components/TaskItem/TaskItem";
+import Task from "@/utils/Task";
 
 type FilterStatus = "" | "pending" | "completed";
 
-interface Task {
-  id: number;
-  title: string;
-  status: "pending" | "completed";
-}
-
 const TASKS_STORAGE_KEY = "tasksList";
 
-// Load tasks from localStorage
 const loadTasks = (): Task[] => {
   const storedTasks = localStorage.getItem(TASKS_STORAGE_KEY);
   return storedTasks ? JSON.parse(storedTasks) : [];
 };
 
-// Save tasks to localStorage
 const saveTasks = (tasks: Task[]) => {
   localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(tasks));
 };
@@ -31,30 +24,27 @@ export default function Home() {
   const [sortAlpha, setSortAlpha] = useState<boolean>(false);
 
   const cleanAllTasks = () => {
-    setTasksList([]); // Clear the state
-    localStorage.removeItem(TASKS_STORAGE_KEY); // Clear the localStorage
+    setTasksList([]);
+    localStorage.removeItem(TASKS_STORAGE_KEY);
   };
 
-  // Load tasks only on the client side
   useEffect(() => {
     setTasksList(loadTasks());
   }, []);
 
-  // Persist tasks to localStorage on change
   useEffect(() => {
     saveTasks(tasksList);
   }, [tasksList]);
 
   const addTask = (title: string) => {
     const newTask: Task = {
-      id: Date.now(), // Safe because it runs on the client now
+      id: Date.now(),
       title,
       status: "pending",
     };
     setTasksList([...tasksList, newTask]);
   };
 
-  // Toggle Task Status
   const toggleTaskStatus = (id: number) => {
     setTasksList(
       tasksList.map((task) =>
@@ -68,7 +58,6 @@ export default function Home() {
     );
   };
 
-  // Toggle Filter Status
   const toggleFilterStatus = () => {
     setFilterStatus((prevStatus) => {
       switch (prevStatus) {
@@ -82,33 +71,21 @@ export default function Home() {
     });
   };
 
-  // Toggle Sort Alphabetically
   const toggleSortAlphabetically = () => {
     setSortAlpha((prev) => !prev);
   };
 
-  // Filter Tasks
   const filteredTasks = tasksList.filter((task) => {
     if (filterStatus === "") return true;
     return task.status === filterStatus;
   });
 
-  // Sort Tasks
   const displayedTasks = React.useMemo(() => {
-    const sortedTasks = filteredTasks.sort((a, b) => {
-        // const cleanA = a.title.replace(/\s+/g, '').toLowerCase();
-        // const cleanB = b.title.replace(/\s+/g, '').toLowerCase();
-        if (sortAlpha) {   
-          return a.title.localeCompare(b.title);
-        } else {
-         return -1 * a.title.localeCompare(b.title);
-        }
-      });
-    
-    return sortedTasks;
+    const isAsending = sortAlpha ? 1 : -1;
+    return filteredTasks.sort((a, b) => {
+      return isAsending * a.title.localeCompare(b.title);
+    });
   }, [filteredTasks, sortAlpha]);
-
-  
 
   return (
     <main className={styles.App}>
@@ -164,20 +141,11 @@ export default function Home() {
         {displayedTasks.length > 0 ? (
           <ol>
             {displayedTasks.map((task) => (
-              <li key={task.id}>
-                <div className={styles.list__title_col}>{task.title} </div>
-                <StatusChip
-                  className={styles.list__status_col}
-                  status={task.status}
-                ></StatusChip>
-                <div className={styles.list__actions_col}>
-                  <button onClick={() => toggleTaskStatus(task.id)}>
-                    {task.status === "pending"
-                      ? "Mark as Completed"
-                      : "Mark as Pending"}
-                  </button>
-                </div>
-              </li>
+              <TaskItem
+                key={task.id}
+                toggleTaskStatus={toggleTaskStatus}
+                task={task}
+              />
             ))}
           </ol>
         ) : (
