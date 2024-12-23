@@ -95,20 +95,19 @@ export default function Home() {
 
   // Sort Tasks
   const displayedTasks = React.useMemo(() => {
-    const sortedTasks = [...filteredTasks];
-    
-      sortedTasks.sort((a, b) => {
-        const cleanA = a.title.replace(/\s+/g, '').toLowerCase();
-        const cleanB = b.title.replace(/\s+/g, '').toLowerCase();
+    const sortedTasks = filteredTasks.sort((a, b) => {
+        // const cleanA = a.title.replace(/\s+/g, '').toLowerCase();
+        // const cleanB = b.title.replace(/\s+/g, '').toLowerCase();
         if (sortAlpha) {   
-          return cleanA > cleanB? 1:-1;
+          return a.title.localeCompare(b.title);
         } else {
-         return cleanA > cleanB? -1:-1;
+         return -1 * a.title.localeCompare(b.title);
         }
       });
     
     return sortedTasks;
   }, [filteredTasks, sortAlpha]);
+
   
 
   return (
