@@ -1,18 +1,38 @@
+
+/* Default styles using system preference */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-  --light-text: #3d3d3d; 
-  --zebra-bg: #cbcbcb; 
+  --foreground: #000000;
+  --light-text: #333333;
+  --zebra-bg: #f5f5f5;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --light-text: #efefef; 
-    --zebra-bg: #2c2c2c; 
+    --light-text: #efefef;
+    --zebra-bg: #2c2c2c;
   }
 }
+
+html.light {
+  --background: #ffffff;
+  --foreground: #000000;
+  --light-text: #333333;
+  --zebra-bg: #f5f5f5;
+  --buttonface: #EFEFEF;
+}
+
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --light-text: #efefef;
+  --zebra-bg: #2c2c2c;
+
+  --buttonface: #6B6B6B;
+}
+
 
 html,
 body {

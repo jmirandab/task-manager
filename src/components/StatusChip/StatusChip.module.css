@@ -36,7 +36,7 @@
 .statusChip__text {
   margin: 0 1.5em;
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   .statuschip {
     color: var(--background);
@@ -60,5 +60,30 @@
       outline: 1px solid #28c328;
 
     }
+  }
+}
+ */
+
+ :global(html.dark) .statuschip {
+  color: var(--background);
+  background-color: transparent;
+}
+
+:global(html.dark) .statuschip_pending {
+  border: 2px solid #f7f74b;
+  color: yellow; 
+
+  .statuschip__icon {
+    outline: 1px solid yellow;
+
+  }
+}
+
+:global(html.dark) .statuschip_complete {
+  border: 2px solid #28c328;
+  color: #28c328;
+  .statuschip__icon {
+    outline: 1px solid #28c328;
+
   }
 }
